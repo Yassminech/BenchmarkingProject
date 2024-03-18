@@ -1,7 +1,7 @@
 const express =require("express");
 const ConnectToDB = require("./config/ConnectToDB");
 require("dotenv").config();
-const passport = require('passport')
+
 
 
 //Connection To DB
@@ -10,9 +10,6 @@ ConnectToDB();
 //Init app
 const app = express ();
 
-/* passport */
-app.use(passport.initialize())
-require('./Security/passport')(passport)
 
 //Middlewares
 app.use(express.json());

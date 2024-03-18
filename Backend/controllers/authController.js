@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
-const {User, validateRegisterUser, validateLoginUser,Test} = require("../models/User");
+const {User, validateRegisterUser, validateLoginUser} = require("../models/User");
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 
@@ -83,6 +83,6 @@ const nodemailer = require('nodemailer');
 
 
 
-module.exports.Test =  asyncHandler(async(req, res) => {
-    res.send("welcome user")
-  });
+
+
+

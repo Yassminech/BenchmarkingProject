@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const {registerUserCtrl , loginUserCtrl, Test}= require("../controllers/authController")
-const passport = require('passport')
+const {registerUserCtrl , loginUserCtrl}= require("../controllers/authController");
+
 
 
 
@@ -9,8 +9,6 @@ router.post("/register", registerUserCtrl);
 
 // /api/auth/login
 router.post("/login", loginUserCtrl);
-
-router.get("/test",passport.authenticate('jwt', { session: false }),Test);
 
 
 

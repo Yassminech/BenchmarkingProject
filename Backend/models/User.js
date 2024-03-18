@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require('bcryptjs');
 const Joi = require("joi");
 const jwt = require("jsonwebtoken");
+const passwordComplexity = require("joi-password-complexity");
 
 
 // User schema
@@ -89,8 +90,6 @@ function validateLoginUser(obj) {
     return schema.validate(obj);
 }
 
-
-
 // Password hash before saving to database
 userSchema.pre('save', async function (next) {
     try {
@@ -103,9 +102,22 @@ userSchema.pre('save', async function (next) {
     }
   });
   
+  // Validate Update User
+function validateUpdateUser(obj) {
+    const schema = Joi.object({
+        username: Joi.string().trim().min(2).max(100),
+        password: passwordComplexity(),
+    });
+    return schema.validate(obj);
+}
+
+
+
+
   module.exports = { 
     User, 
     userSchema,
     validateRegisterUser,
     validateLoginUser,
+    validateUpdateUser,
 };
