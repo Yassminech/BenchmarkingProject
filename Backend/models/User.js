@@ -29,16 +29,18 @@ const userSchema = new mongoose.Schema({
         trim: true,
         minlength: 8,
     },
-    roles: {
-        type: String,
-        default: 'user',
-      },
+    
       profilePhoto:{
         type : Object, //Object
         default : {
             url:"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png",
             publicId : null,
         },
+    },
+    // Property for account status (enabled or disabled)
+    active: {
+        type: Boolean,
+        default: false // The account is disabled by default upon creation
     },
     isAdmin: {
         type: Boolean,
@@ -57,10 +59,10 @@ const userSchema = new mongoose.Schema({
 userSchema.methods.generateAuthToken = function (){
     try {
     return jwt.sign({  
-        id: this._id, 
+        id: this._id,
+        isAdmin : this.isAdmin, 
         name: this.username, 
-        email: this.email,
-        roles: this.roles,},
+        email: this.email},
         process.env.JWT_SECRET, { expiresIn: '1h' });}
     catch (error) {
         res.status(404).json(error.message);

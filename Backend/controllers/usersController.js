@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs");
  * @method GET
  * @access private (only admin)
  --------------------------------------- */
- module.exports.getAllUsersCtrl = asyncHandler(async (req, res) => {
+ module.exports.getAllUsers = asyncHandler(async (req, res) => {
    const users = await User.find().select("-password");
    res.status(200).json(users);
 });
@@ -68,6 +68,51 @@ const bcrypt = require("bcryptjs");
    const count = await User.count();
    res.status(200).json(count);
  });
+
+ /**-----------------------------------------------
+ * @desc    PUT users Activate
+ * @route   /api/users/activate/:id
+ * @method  PUT
+ * @access  private (only admin)
+ ------------------------------------------------*/
+ module.exports.ActivateUser = asyncHandler(async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    //Activation of user account
+    user.active = true;
+    await user.save();
+    res.json({ message: 'The user account has been successfully activated' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  } 
+ });
+
+ /**-----------------------------------------------
+ * @desc    PUT users Desactivate
+ * @route   /api/users/desactivate/:id
+ * @method  PUT
+ * @access  private (only admin)
+ ------------------------------------------------*/
+ exports.desactivateUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+      if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+      }
+      //Deactivation of user account
+      user.active = false;
+      await user.save();
+
+      res.status(200).json({ message: 'User account successfully disabled' });
+  } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server Error' });
+  }
+};
 
 
 

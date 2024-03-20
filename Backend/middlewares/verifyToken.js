@@ -42,5 +42,17 @@ function verifyTokenOnlyUser(req, res, next) {
     }
   });
 }
+
+// Verify Token & Authorization
+function verifyTokenAuthorization(req, res, next) {
+  verifyToken(req, res, () => {
+    if (req.user.id === req.params.id || req.user.isAdmin) {
+      next();
+    } else {
+      return res.status(403).json({ message: "Access denied. Only administrators are allowed" });
+    }
+  });
+}
+
   
-module.exports = {verifyToken, VerifyTokenAdmin, verifyTokenOnlyUser};
+module.exports = {verifyToken, VerifyTokenAdmin, verifyTokenOnlyUser, verifyTokenAuthorization};

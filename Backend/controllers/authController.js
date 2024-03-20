@@ -12,7 +12,7 @@ const nodemailer = require('nodemailer');
  * @method POST
  * @access public
  --------------------------------------- */
- module.exports.registerUserCtrl = asyncHandler(async(req,res) =>{
+ module.exports.singup = asyncHandler(async(req,res) =>{
     //validation
     const {error}= validateRegisterUser(req.body);
     if (error){
@@ -47,7 +47,7 @@ const nodemailer = require('nodemailer');
  * @method POST
  * @access public
  --------------------------------------- */
- module.exports.loginUserCtrl =asyncHandler(async(req,res) => {
+ module.exports.login =asyncHandler(async(req,res) => {
     //Validation
     const {error}= validateLoginUser(req.body);
     if (error){
