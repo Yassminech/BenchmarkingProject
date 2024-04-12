@@ -7,6 +7,7 @@ import Login from "./components/Login/login";
 import Features from "./components/features";
 import Solutions from "./components/solutions";
 import Signup from "./components/Signup/Signup";
+import NotFound from "./components/Not-found/NotFound";
 
 
 
@@ -23,6 +24,7 @@ function App() {
           <Route exact path='/solution' element={<Solutions />} />
           <Route exact path='/login' element={<Login />} />
           <Route exact path='/Signup' element={<Signup/>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         </div>
       </Router>

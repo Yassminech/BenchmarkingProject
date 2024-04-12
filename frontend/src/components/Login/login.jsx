@@ -30,12 +30,14 @@ function Login() {
     <div className="login">
       <h1>Login</h1>
       <form>
-        <input
+       <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
+          placeholder="Email" 
         />
+        
+        
         <input
           type="password"
           value={password}
@@ -46,9 +48,10 @@ function Login() {
           Login
         </button>
       </form>
-      <div className="forgot-password">Lost Password? <span>Click Here!</span></div>
-      <p>OR</p>
-      <Link to="/signup">Signup Page</Link>
+      <div className="remember-forgot">
+        <label><input type="checkbox"/>Remember me</label>
+      </div>
+      <div className="forgot-password">Lost Password? <span>Click Here!</span></div> <p>OR</p> <Link to="/signup">Signup Page</Link>
     </div>
   );
 }

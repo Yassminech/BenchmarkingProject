@@ -1,18 +1,19 @@
 /* Home.css */
 .home {
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .header {
   background-color: #dfcdc3;
   color: #fff;
   text-align: center;
-  padding: 80px 0;
+  padding: 10px 0;
 }
 
 .header-content {
   max-width: 800px;
   margin: 0 auto;
+  padding: 50px 0;
 }
 
 .header-title {
@@ -47,9 +48,10 @@
 
 .btn-secondary {
   background-color: transparent;
-  color: #fff;
+  color: #999797;
   border: 2px solid #fff;
 }
+
 
 .btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
@@ -89,10 +91,6 @@
 .testimonial-text {
   font-size: 24px;
   margin-bottom: 20px;
-}
-
-.testimonial-author {
-  font-size: 18px;
 }
 
 .footer {
