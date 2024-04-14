@@ -80,4 +80,18 @@
     text-decoration: none;
   }
 
- 
+.remember-forgot{
+  display: flex;
+  margin: 15px;
+}
+
+.remember-forgot label input{
+  accent-color: #fff;
+  margin-right: 4px;
+}
+
+.icon {
+  top: 50%;
+  color: #999; 
+}
+

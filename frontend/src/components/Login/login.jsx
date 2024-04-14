@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { FaUser, FaLock } from "react-icons/fa"; 
 import './Login.css';
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../redux/apiCalls/authApiCall";
 
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const dispatch = useDispatch();
+
   async function submit(e) {
     e.preventDefault();
     try {
+      dispatch(loginUser({ email, password }));
       const res = await axios.post("http://localhost:3000/login", {
         email,
         password,
@@ -34,16 +40,16 @@ function Login() {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email" 
+          placeholder="Email"
         />
-        
-        
+        <FaUser className="icon" />   
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
         />
+        <FaLock className="icon" />
         <button type="submit" onClick={submit}>
           Login
         </button>
