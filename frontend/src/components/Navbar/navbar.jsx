@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 const Navbar = () => {
   const { user } = useSelector((state) => state.auth);
   
+  
     return (  <header className="header">
     <div className="container">
       <h1 className="header_title">360° MarkBanch</h1>
@@ -24,9 +25,15 @@ const Navbar = () => {
           <li className="header_nav-item">
             <Link to="/solution" className="header_nav-link">Solutions</Link>
           </li>
-          <li className="header_nav-item">
-            <Link to="/login" className="header_nav-link">Login</Link>
-          </li>
+          {user ? (
+              <li className="header_nav-item">
+                <Link to="/logout" className="header_nav-link">Logout</Link>
+              </li>
+            ) : (
+              <li className="header_nav-item">
+                <Link to="/login" className="header_nav-link">Login</Link>
+              </li>
+            )}
         </ul>
       </nav>
     </div>
