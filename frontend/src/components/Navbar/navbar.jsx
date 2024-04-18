@@ -1,11 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import "./navbar.css";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { logoutUser } from "../../redux/apiCalls/authApiCall";
 
 
-const Navbar = () => {
+  const Navbar = () => {
   const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const [dropdown, setDropdown] = useState(false);
+
+    // Logout Handler
+    const logoutHandler = () => {
+      setDropdown(false);
+      dispatch(logoutUser());
+    }
   
   
     return (  <header className="header">
@@ -27,7 +37,19 @@ const Navbar = () => {
           </li>
           {user ? (
               <li className="header_nav-item">
-                <Link to="/logout" className="header_nav-link">Logout</Link>
+                <Link 
+                  to="#" 
+                  className="header_nav-link" 
+                  onClick={() => setDropdown(!dropdown)} // Invert dropdown state on click
+                >
+                  {user.username}
+                </Link>
+                {dropdown && ( // Display dropdown if dropdown is true
+                  <div className="dropdown-content">
+                    <Link to={`/profile/${user._id}`} className="dropdown-item">Profile</Link>
+                    <Link to="/logout" className="dropdown-item" onClick={logoutHandler}>Logout</Link>
+                  </div>
+                )}
               </li>
             ) : (
               <li className="header_nav-item">
