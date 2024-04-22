@@ -48,7 +48,7 @@ const bcrypt = require("bcryptjs");
      req.params.id,
      {
        $set: {
-         username: req.body.username,
+         fullname: req.body.fullname,
          password: req.body.password,
        },
      },

@@ -1,33 +1,31 @@
 .verfiy-email {
-    height: calc(100vh - 130px);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.verify-email-icon {
-    font-size: 80px;
-    color: var(--green-color);
-}
-
-.verfiy-email-title {
-    font-size: 32px;
-    margin-bottom: 20px;
-    color: var(--green-color);
-}
-
-.verify-email-link {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .verify-email-icon {
+    font-size: 48px;
+    color: green;
+  }
+  
+  .verfiy-email-title {
+    margin-top: 20px;
     font-size: 24px;
-    font-weight: 600;
-    background-color: var(--primary-color);
-    padding: 5px;
-    border-radius: 5px;
-    color: var(--white-color);
-}
-
-.verify-email-not-found {
-    font-size: 40px;
-    color: var(--red-color);
-}
+  }
+  
+  .verify-email-link {
+    display: block;
+    margin-top: 20px;
+    color: blue;
+    text-decoration: none;
+  }
+  
+  .verify-email-link:hover {
+    text-decoration: underline;
+  }
+  
+  .verify-email-not-found {
+    margin-top: 20px;
+    font-size: 24px;
+    color: red;
+  }

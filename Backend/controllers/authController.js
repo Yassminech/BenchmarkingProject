@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 const {User, validateRegisterUser, validateLoginUser} = require("../models/User");
+const {VerificationToken} = require("../models/VerificationToken");
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 
@@ -30,16 +31,38 @@ const nodemailer = require('nodemailer');
 
     //new user and save it to DB
     user = new User({
-        username : req.body.username,
+        fullname : req.body.fullname,
         email : req.body.email,
         password: hashedPasword, 
     });
     await user.save();
-    //@TODO -sending email (verifiy account)
 
-    //send a response to client 
-    res.status(201).json({message : "You registered successfuly, please log in"});
- });
+ // Creating new VerificationToken & save it toDB
+  const verifictionToken = new VerificationToken({
+    userId: user._id,
+    token: crypto.randomBytes(32).toString("hex"),
+  });
+  await verifictionToken.save();
+
+  // Making the link
+  const link = `${process.env.CLIENT_DOMAIN}/users/${user._id}/verify/${verifictionToken.token}`;
+
+  // Putting the link into an html template
+  const htmlTemplate = `
+    <div>
+      <p>Click on the link below to verify your email</p>
+      <a href="${link}">Verify</a>
+    </div>`;
+
+  // Sending email to the user
+  await sendEmail(user.email, "Verify Your Email", htmlTemplate);
+
+  // Response to the client
+  res.status(201).json({
+    message: "We sent to you an email, please verify your email address",
+  });
+});
+
 
  /**---------------------------------------
  * @desc login User
@@ -66,6 +89,12 @@ const nodemailer = require('nodemailer');
     }
 
     //@TODO -sending email(verify account if not verified)
+    if (!user.isAccountVerified) {
+        let verificationToken = await VerificationToken.findOne({
+          userId: user._id,
+        });
+    }
+    
 
     //genrate token (jwt)-new token
     const token= user.generateAuthToken();
