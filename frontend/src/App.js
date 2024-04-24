@@ -10,6 +10,7 @@ import Signup from "./components/Signup/Signup";
 import NotFound from "./components/Not-found/NotFound";
 import VerifyEmail from "./components/verify-email/VerifyEmail";
 import { useSelector } from "react-redux";
+import ForgotPassword from "./components/Forgot-password/ForgetPassword";
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
             path="/users/:userId/verify/:token"
             element={!user ? <VerifyEmail /> : <Navigate to="/" />} 
           />
+           <Route path="/forgot-password" element={<ForgotPassword/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         </div>

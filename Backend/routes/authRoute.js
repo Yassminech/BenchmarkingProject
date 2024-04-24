@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const {singup, login}= require("../controllers/authController");
+const {singup, login, verifyUserAccount}= require("../controllers/authController");
 
 
 
@@ -9,6 +9,9 @@ router.post("/register", singup);
 
 // /api/auth/login
 router.post("/login", login);
+
+// /api/auth/:userId/verify/:token
+router.get("/:userId/verify/:token", verifyUserAccount);
 
 
 

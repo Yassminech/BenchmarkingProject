@@ -57,7 +57,7 @@ function Login() {
       <div className="remember-forgot">
         <label><input type="checkbox"/>Remember me</label>
       </div>
-      <div className="forgot-password">Lost Password? <span>Click Here!</span></div> <p>OR</p> <Link to="/signup">Signup Page</Link>
+      <div className="forgot-password"><span>Lost Password? </span><Link to="/forgot-password">Click here!</Link></div> <p>OR</p> <Link to="/signup">Signup Page</Link>
     </div>
   );
 }

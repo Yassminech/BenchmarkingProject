@@ -62,9 +62,10 @@
     margin-top: 27px;
     color: #797979;
     font-size: 18px;
-    text-align: center;
+    margin-bottom: 10px;
+    align-items: center;
   }
-.forgot-password span{
+.forgot-password link{
    color: #0056b3;
    cursor: pointer; 
 }
