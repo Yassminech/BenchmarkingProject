@@ -1,8 +1,9 @@
 import React from 'react';
 import './Home.css';
 import { Link } from 'react-router-dom';
-
-
+import analysisImage from '../../assets/analytics.avif';
+import managementImage from '../../assets/management.avif';
+import marketingImage from '../../assets/marketing.jpg';
 
 const Home = () => {
     return (
@@ -18,17 +19,17 @@ const Home = () => {
             </header>
             <section className="features">
                 <div className="feature">
-                    <i className="fas fa-chart-line feature-icon"></i>
+                    <img src={analysisImage} alt="Analysis" className="feature-image" />
                     <h2 className="feature-title">Analysis in real time</h2>
                     <p className="feature-description">Get accurate, up-to-date data on your online performance</p>
                 </div>
                 <div className="feature">
-                    <i className="fas fa-cogs feature-icon"></i>
+                    <img src={managementImage} alt="Management" className="feature-image" />
                     <h2 className="feature-title">Easy management</h2>
                     <p className="feature-description">Manage all your social accounts and channels from a single platform.</p>
                 </div>
                 <div className="feature">
-                    <i className="fas fa-bullhorn feature-icon"></i>
+                    <img src={marketingImage} alt="Marketing" className="feature-image" />
                     <h2 className="feature-title">Marketing integration</h2>
                     <p className="feature-description">Create, plan and publish marketing campaigns in just a few clicks.</p>
                 </div>

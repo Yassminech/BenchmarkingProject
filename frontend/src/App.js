@@ -5,12 +5,13 @@ import Home from "./components/Home/Home";
 import Navbar from "./components/Navbar/navbar";
 import Login from "./components/Login/login";
 import Features from "./components/Features/features";
-import Solutions from "./components/solutions";
+import Solutions from "./components/Solutions/solutions";
 import Signup from "./components/Signup/Signup";
 import NotFound from "./components/Not-found/NotFound";
 import VerifyEmail from "./components/verify-email/VerifyEmail";
 import { useSelector } from "react-redux";
 import ForgotPassword from "./components/Forgot-password/ForgetPassword";
+import Dashboard from "./components/DashboardAdmin/DashboardAdmin";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           />
            <Route path="/forgot-password" element={<ForgotPassword/>} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/admin/dashboard" component={<Dashboard/>} />
         </Routes>
         </div>
       </Router>

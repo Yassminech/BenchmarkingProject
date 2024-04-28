@@ -62,6 +62,13 @@
   justify-content: space-around;
   margin: 80px auto;
 }
+.feature-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
 
 .feature {
   text-align: center;
