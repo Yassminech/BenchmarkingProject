@@ -11,7 +11,10 @@ import NotFound from "./components/Not-found/NotFound";
 import VerifyEmail from "./components/verify-email/VerifyEmail";
 import { useSelector } from "react-redux";
 import ForgotPassword from "./components/Forgot-password/ForgetPassword";
-import Dashboard from "./components/DashboardAdmin/DashboardAdmin";
+import DashboardAdmin from "./components/DashboardAdmin/DashboardAdmin";
+import ResetPassword from "./components/Reset-Password/ResetPassword";
+
+
 
 
 function App() {
@@ -33,8 +36,9 @@ function App() {
             element={!user ? <VerifyEmail /> : <Navigate to="/" />} 
           />
            <Route path="/forgot-password" element={<ForgotPassword/>} />
+           <Route path="/reset-password/:userId/:token" element={<ResetPassword />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/admin/dashboard" component={<Dashboard/>} />
+          <Route path="/admin" element={<DashboardAdmin/>} />
         </Routes>
         </div>
       </Router>

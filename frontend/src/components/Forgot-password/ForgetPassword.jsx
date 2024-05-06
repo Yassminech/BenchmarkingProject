@@ -1,32 +1,32 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './ForgetPassword.css';
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { forgotPassword } from "../../redux/apiCalls/PasswordApiCall";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
+  const dispatch = useDispatch();
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Send password reset request to API
-    console.log('Password reset request sent for: ', email);
+  const formSubmitHandler = (e) => {
+      e.preventDefault();
+      if(email.trim() === "") {
+          toast.error("Email is required");
+          return;
+      }
+      dispatch(forgotPassword(email));
   };
 
   return (
-    <div>
-      <h2>Forgot Password</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email:
-          <input type="email" value={email} onChange={handleEmailChange} />
-        </label>
-        <button type="submit">Submit</button>
+      <form onSubmit={formSubmitHandler}>
+          <label>Email:</label>
+          <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+          />
+          <button type="submit">Submit</button>
       </form>
-      <p>Remember your password? <Link to="/login">Login</Link></p>
-    </div>
   );
 };
 
