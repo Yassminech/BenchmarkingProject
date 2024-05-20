@@ -1,0 +1,31 @@
+.verfiy-email {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .verify-email-icon {
+    font-size: 48px;
+    color: green;
+  }
+  
+  .verfiy-email-title {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+  
+  .verify-email-link {
+    display: block;
+    margin-top: 20px;
+    color: blue;
+    text-decoration: none;
+  }
+  
+  .verify-email-link:hover {
+    text-decoration: underline;
+  }
+  
+  .verify-email-not-found {
+    margin-top: 20px;
+    font-size: 24px;
+    color: red;
+  }
